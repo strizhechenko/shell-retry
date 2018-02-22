@@ -12,12 +12,12 @@ def setup_logging(args):
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('-b', '--backoff', help='backoff factor (sleep(--interval *= --backoff)', type=float, default=2)
-    parser.add_argument('-r', '--retry-count', type=int, help='How many time re-run cmd if it fails', default=1)
-    parser.add_argument('-i', '--interval', help='Initial interval between retries', type=float, default=1)
-    parser.add_argument('-v', '--verbose', help='Be verbose, write how many retries left and how long will we wait',
+    parser.add_argument('--backoff', help='backoff factor (sleep(--interval *= --backoff)', type=float, default=2)
+    parser.add_argument('--retry-count', type=int, help='How many time re-run cmd if it fails', default=1)
+    parser.add_argument('--interval', help='Initial interval between retries', type=float, default=1)
+    parser.add_argument('--verbose', help='Be verbose, write how many retries left and how long will we wait',
                         action='store_true', default=False)
-    parser.add_argument("cmd", type=str, nargs='+')
+    parser.add_argument("cmd", nargs='+', type=str, action='store')
     return parser.parse_args()
 
 
