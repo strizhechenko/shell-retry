@@ -7,7 +7,9 @@ from subprocess import Popen
 
 
 def setup_logging(args):
-    logging.basicConfig(format="%(asctime)s %(levelname)s: %(message)s", level=(logging.INFO if args.verbose else logging.WARNING))
+    log_format = "%(asctime)s %(levelname)s: %(message)s"
+    level = logging.INFO if args.verbose else logging.WARNING
+    logging.basicConfig(format=log_format, level=level)
 
 
 def parse_args():
