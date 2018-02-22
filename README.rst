@@ -1,6 +1,21 @@
 shell-retry
 ===========
 
+.. |travis| image:: https://travis-ci.org/strizhechenko/shell-retry.svg?branch=master
+   :target: https://travis-ci.org/strizhechenko/shell-retry
+.. |landscape| image:: https://landscape.io/github/strizhechenko/shell-retry/master/landscape.svg?style=flat
+   :target: https://landscape.io/github/strizhechenko/shell-retry/master
+.. |pypi| image:: https://badge.fury.io/py/shell-retry.svg
+   :target: https://badge.fury.io/py/shell-retry
+.. |license| image:: https://img.shields.io/badge/License-MIT-yellow.svg?colorB=green
+   :target: https://opensource.org/licenses/MIT
+.. |pyversions| image:: https://img.shields.io/pypi/pyversions/shell-retry.svg?colorB=green
+   :target: https://pypi.python.org/pypi/shell-retry
+.. |issues| image:: https://img.shields.io/codeclimate/issues/github/strizhechenko/shell-retry.svg
+   :target: https://codeclimate.com/github/strizhechenko/shell-retry/issues
+.. |codeclimate| image:: https://img.shields.io/codeclimate/github/strizhechenko/shell-retry.svg
+   :target: https://codeclimate.com/github/strizhechenko/shell-retry
+
 Wrapper for call any utilities with retries until they succeed
 
 Install

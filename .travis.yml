@@ -1,0 +1,18 @@
+language: python
+
+os: linux
+
+python:
+  - "2.7"
+  - "3.4"
+  - "3.6"
+
+install: python setup.py install && pip install flake8
+
+script:
+  - shell-retry --help
+  - shell-retry true
+  - ! shell-retry --verbose --retry-count=6 --interval=2 --interval-max=3 --backoff=1.2 false
+  - ! shell-retry --verbose --retry-count=6 --interval=2 --interval-min=1 --backoff=1.4 false
+  - python setup.py checkdocs
+  - flake8 shell_retry
