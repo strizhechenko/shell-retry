@@ -6,18 +6,19 @@ Wrapper for call any utilities with retries until they succeed
 Install
 -------
 
-``` shell
-pip install shell-retry
-```
+.. code:: shell
+
+  pip install shell-retry
+
 
 Examples
 --------
 
-Let's start from `--help`:
+Let's start from :code:`--help`:
 
 .. code:: shell
 
-  shell-retry --help
+  $ shell-retry --help
   usage: shell-retry [-h] [--backoff BACKOFF] [--retry-count RETRY_COUNT]
                      [--interval INTERVAL] [--verbose]
                      cmd [cmd ...]
@@ -35,9 +36,9 @@ Let's start from `--help`:
     --verbose             Be verbose, write how many retries left and how long
                           will we wait
 
-- To debug something use `--verbose` flag.
-- `--retry-count` specifies retry (**not a try**) count.
-- `--interval` sets **initial** interval between retries, interval multiplies with backoff before next retry.
+- To debug something use :code:`--verbose` flag.
+- :code:`--retry-count` specifies retry (**not a try**) count.
+- :code:`--interval` sets **initial** interval between retries, interval multiplies with backoff before next retry.
 
 .. code:: shell
 
@@ -61,11 +62,11 @@ Let's start from `--help`:
   2018-02-22 18:23:15,764 INFO: run ['false']
   2018-02-22 18:23:15,769 INFO: command returned 1
 
-To use some flags in `cmd` use `--` before `cmd`.
+To use some flags in :code:`cmd` use :code:`--` before :code:`cmd`.
 
 .. code:: shell
 
-  shell-retry --retry-count=5 --backoff=1.2 -- curl -m 1 --connect-time 1 http://10.30.33.32
+  $ shell-retry --retry-count=5 --backoff=1.2 -- curl -m 1 --connect-time 1 http://10.30.33.32
   curl: (28) Connection timed out after 1000 milliseconds
   curl: (28) Connection timed out after 1004 milliseconds
   curl: (28) Connection timed out after 1003 milliseconds
