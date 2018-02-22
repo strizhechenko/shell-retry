@@ -7,7 +7,7 @@ python:
   - "3.4"
   - "3.6"
 
-install: python setup.py install && pip install flake8
+install: python setup.py install && pip install flake8 collective.checkdocs
 
 script:
   - shell-retry --help
