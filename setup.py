@@ -18,7 +18,7 @@ setup(
     author='Oleg Strizhechenko',
     author_email='oleg.strizhechenko@gmail.com',
     description='Wrapper for call any utilities with retries until they succeed',
-    long_description=(read('README.md')),
+    long_description=(read('README.rst')),
     entry_points={
         'console_scripts': [
             'shell-retry=shell_retry.__init__:main',
