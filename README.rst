@@ -33,6 +33,10 @@ Let's start from :code:`--help`:
     --retry-count RETRY_COUNT
                           How many time re-run cmd if it fails
     --interval INTERVAL   Initial interval between retries
+    --interval-max INTERVAL_MAX
+                          upper limit for interval
+    --interval-min INTERVAL_MIN
+                          lower limit for interval
     --verbose             Be verbose, write how many retries left and how long
                           will we wait
 
@@ -74,4 +78,24 @@ To use some flags in :code:`cmd` use :code:`--` before :code:`cmd`.
   curl: (28) Connection timed out after 1000 milliseconds
   curl: (28) Connection timed out after 1000 milliseconds
 
+To limit interval between retries you can use options :code:`--interval-max` and :code:`--interval-min`:
 
+.. code:: shell
+
+  $ shell-retry --verbose --retry-count=3 --backoff=1.2 --interval-max=1.2 -- curl -m 1 --connect-time 1 http://10.30.33.32
+  2018-02-22 19:21:59,170 INFO: Namespace(backoff=1.2, cmd=['curl', '-m', '1', '--connect-time', '1', 'http://10.30.33.32'], interval=1, interval_max=1.2, interval_min=None, retry_count=3, verbose=True)
+  2018-02-22 19:21:59,170 INFO: run ['curl', '-m', '1', '--connect-time', '1', 'http://10.30.33.32']
+  curl: (28) Connection timed out after 1000 milliseconds
+  2018-02-22 19:22:00,184 INFO: command returned 28
+  2018-02-22 19:22:00,185 INFO: waiting 1.000000 seconds, 3 retries left
+  2018-02-22 19:22:01,187 INFO: run ['curl', '-m', '1', '--connect-time', '1', 'http://10.30.33.32']
+  curl: (28) Connection timed out after 1005 milliseconds
+  2018-02-22 19:22:02,209 INFO: command returned 28
+  2018-02-22 19:22:02,210 INFO: waiting 1.200000 seconds, 2 retries left
+  2018-02-22 19:22:03,414 INFO: run ['curl', '-m', '1', '--connect-time', '1', 'http://10.30.33.32']
+  curl: (28) Connection timed out after 1001 milliseconds
+  2018-02-22 19:22:04,432 INFO: command returned 28
+  2018-02-22 19:22:04,432 INFO: waiting 1.200000 seconds, 1 retries left
+  2018-02-22 19:22:05,638 INFO: run ['curl', '-m', '1', '--connect-time', '1', 'http://10.30.33.32']
+  curl: (28) Connection timed out after 1006 milliseconds
+  2018-02-22 19:22:06,662 INFO: command returned 28

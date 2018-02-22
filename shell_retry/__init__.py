@@ -17,10 +17,22 @@ def parse_args():
     parser.add_argument('--backoff', help='backoff factor (sleep(--interval *= --backoff)', type=float, default=2)
     parser.add_argument('--retry-count', type=int, help='How many time re-run cmd if it fails', default=1)
     parser.add_argument('--interval', help='Initial interval between retries', type=float, default=1)
+    parser.add_argument('--interval-max', help='upper limit for interval', type=float)
+    parser.add_argument('--interval-min', help='lower limit for interval', type=float)
     parser.add_argument('--verbose', help='Be verbose, write how many retries left and how long will we wait',
                         action='store_true', default=False)
     parser.add_argument("cmd", nargs='+', type=str, action='store')
     return parser.parse_args()
+
+
+def next_interval(args):
+    interval = args.interval
+    interval *= args.backoff
+    if args.interval_max is not None:
+        interval = min(interval, args.interval_max)
+    if args.interval_min is not None:
+        interval = max(interval, args.interval_min)
+    return interval
 
 
 def __run(args, retry):
@@ -34,12 +46,11 @@ def __run(args, retry):
         process.kill()
     except OSError:
         pass
-    if args.retry_count <= 0:
+    if retry <= 0:
         exit(process.returncode)
     logging.info('waiting {0:f} seconds, {1} retries left'.format(args.interval, retry))
     time.sleep(args.interval)
-    args.retry_count -= 1
-    args.interval *= args.backoff
+    args.interval = next_interval(args)
 
 
 def run(args):

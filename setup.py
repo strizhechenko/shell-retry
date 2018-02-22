@@ -11,7 +11,7 @@ def read(*paths):
 
 setup(
     name='shell-retry',
-    version='0.0.5',
+    version='0.0.6',
     packages=['shell_retry'],
     url='https://github.com/strizhechenko/shell-retry',
     license='MIT',
