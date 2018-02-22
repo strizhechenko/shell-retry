@@ -14,7 +14,7 @@ def setup_logging(args):
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--backoff', help='backoff factor (sleep(--interval *= --backoff)', type=float, default=2)
+    parser.add_argument('--backoff', help='backoff factor (sleep(--interval *= --backoff)', type=float, default=1)
     parser.add_argument('--retry-count', type=int, help='How many time re-run cmd if it fails', default=1)
     parser.add_argument('--interval', help='Initial interval between retries', type=float, default=1)
     parser.add_argument('--interval-max', help='upper limit for interval', type=float)
