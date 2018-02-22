@@ -16,6 +16,8 @@ shell-retry
 .. |codeclimate| image:: https://img.shields.io/codeclimate/github/strizhechenko/shell-retry.svg
    :target: https://codeclimate.com/github/strizhechenko/shell-retry
 
+|travis| |landscape| |pypi| |license| |pyversions| |codeclimate| |issues|
+
 Wrapper for call any utilities with retries until they succeed
 
 Install
